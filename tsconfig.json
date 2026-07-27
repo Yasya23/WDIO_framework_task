@@ -11,8 +11,13 @@
       "@wdio/mocha-framework"
     ],
     "paths": {
-      "@components/*": ["./business/components/*"],
-      "@pages/*": ["./business/pages/*"]
+      "@business-components/*": ["./src/business/components/*"],
+      "@business-pages/*": ["./src/business/pages/*"],
+      "@core-pages/*": ["./src/core/pages/*"],
+      "@core-components/*": ["./src/core/components/*"],
+      "@core-constants/*": ["./src/core/constants/*"],
+      "@core-types/*": ["./src/core/types/*"],
+      "@utils/*": ["./src/core/utils/*"]
     },
     "skipLibCheck": true,
     "noEmit": true,
