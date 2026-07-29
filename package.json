@@ -13,6 +13,6 @@
     "expect-webdriverio": "^5.7.0"
   },
   "scripts": {
-    "test": "wdio run ./wdio.conf.ts"
+    "test": "wdio run ./src/test/configs/wdio.conf.ts"
   }
 }

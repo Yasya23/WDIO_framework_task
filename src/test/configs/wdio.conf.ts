@@ -1,4 +1,5 @@
-import { getEnv } from './src/core/utils/get-env.util';
+import path from 'node:path';
+import { getEnv } from '@utils/get-env.util';
 
 export const config: WebdriverIO.Config = {
   //
@@ -8,7 +9,7 @@ export const config: WebdriverIO.Config = {
   // ====================
   // WebdriverIO supports running e2e tests as well as unit and component tests.
   runner: 'local',
-  tsConfigPath: './tsconfig.json',
+  tsConfigPath: path.resolve(process.cwd(), 'tsconfig.json'),
 
   //
   // ==================
@@ -25,7 +26,7 @@ export const config: WebdriverIO.Config = {
   // The path of the spec files will be resolved relative from the directory of
   // of the config file unless it's absolute.
   //
-  specs: ['./src/test/specs/**/*.ts'],
+  specs: [path.resolve(process.cwd(), 'src/test/specs/**/*.spec.ts')],
   // Patterns to exclude.
   exclude: [
     // 'path/to/excluded/files'
