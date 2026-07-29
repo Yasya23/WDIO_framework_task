@@ -1,7 +1,10 @@
+import { getEnv } from './src/core/utils/get-env.util';
+
 export const config: WebdriverIO.Config = {
   //
   // ====================
   // Runner Configuration
+  baseUrl: getEnv('BASE_WEBSITE_URL'),
   // ====================
   // WebdriverIO supports running e2e tests as well as unit and component tests.
   runner: 'local',
