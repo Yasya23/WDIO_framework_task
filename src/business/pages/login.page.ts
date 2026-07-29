@@ -1,10 +1,15 @@
-import { BasePage } from '@core-pages/base.page';
-import { paths } from '@core-constants/paths.constants';
+import { BasePage } from '@pages/base.page';
+import { paths } from '@constants/paths.constants';
 
-export class LoginPage extends BasePage {
+class LoginPage extends BasePage {
+  protected get url() {
+    return paths.login;
+  }
+
   private get headerTitle() {
     return $('h2');
   }
+
   private get usernameInput() {
     return $('#username');
   }
@@ -13,24 +18,20 @@ export class LoginPage extends BasePage {
     return $('button[type="submit"]');
   }
 
-  public async openLoginPage(): Promise<void> {
-    await this.open(paths.login);
-  }
-
   public async getTitleText(): Promise<string> {
-    return this.getText(this.headerTitle);
+    return this.actions.getText(this.headerTitle);
   }
 
   public async isUsernameDisplayed(): Promise<boolean> {
-    return this.isDisplayed(this.usernameInput);
+    return this.actions.isDisplayed(this.usernameInput);
   }
 
   public async getUsernameInputType(): Promise<string> {
-    return this.getAttribute(this.usernameInput, 'type');
+    return this.actions.getAttribute(this.usernameInput, 'type');
   }
 
   public async getSubmitButtonText(): Promise<string> {
-    const text = await this.getText(this.submitButton);
+    const text = await this.actions.getText(this.submitButton);
     return text.trim();
   }
 }

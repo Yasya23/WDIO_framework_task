@@ -1,11 +1,11 @@
 import { assert, should as initShould, expect as chaiExpect } from 'chai';
-import { loginPage } from '@business-pages/login.page';
+import { loginPage } from '@pages/login.page';
 
 initShould();
 
 describe('Chai Assertion Interfaces (Refactored)', () => {
   beforeEach(async () => {
-    await loginPage.openLoginPage();
+    await loginPage.open();
   });
 
   it('1. Demonstration of the ASSERT interface', async () => {
