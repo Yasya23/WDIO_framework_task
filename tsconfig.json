@@ -11,12 +11,10 @@
       "@wdio/mocha-framework"
     ],
     "paths": {
-      "@business-components/*": ["./src/business/components/*"],
-      "@business-pages/*": ["./src/business/pages/*"],
-      "@core-pages/*": ["./src/core/pages/*"],
-      "@core-components/*": ["./src/core/components/*"],
-      "@core-constants/*": ["./src/core/constants/*"],
-      "@core-types/*": ["./src/core/types/*"],
+      "@core-actions/*": ["./src/core/actions/*"],
+      "@pages/*": ["./src/business/pages/*"],
+      "@constants/*": ["./src/business/constants/*"],
+      "@business-types/*": ["./src/business/types/*"],
       "@utils/*": ["./src/core/utils/*"]
     },
     "skipLibCheck": true,
