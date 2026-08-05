@@ -11,7 +11,6 @@
       "@wdio/mocha-framework"
     ],
     "paths": {
-      "@core-actions/*": ["./src/core/actions/*"],
       "@pages/*": ["./src/business/pages/*"],
       "@constants/*": ["./src/business/constants/*"],
       "@business-types/*": ["./src/business/types/*"],
