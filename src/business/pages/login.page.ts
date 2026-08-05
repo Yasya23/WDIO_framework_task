@@ -2,37 +2,24 @@ import { BasePage } from '@pages/base.page';
 import { paths } from '@constants/paths.constants';
 
 class LoginPage extends BasePage {
-  protected get url() {
+  private readonly headerTitleSelector = 'h2';
+  private readonly usernameInputSelector = '#username';
+  private readonly submitButtonSelector = 'button[type="submit"]';
+
+  public get url() {
     return paths.login;
   }
 
-  private get headerTitle() {
-    return $('h2');
+  public get headerTitle() {
+    return $(this.headerTitleSelector);
   }
 
-  private get usernameInput() {
-    return $('#username');
+  public get usernameInput() {
+    return $(this.usernameInputSelector);
   }
 
-  private get submitButton() {
-    return $('button[type="submit"]');
-  }
-
-  public async getTitleText(): Promise<string> {
-    return this.actions.getText(this.headerTitle);
-  }
-
-  public async isUsernameDisplayed(): Promise<boolean> {
-    return this.actions.isDisplayed(this.usernameInput);
-  }
-
-  public async getUsernameInputType(): Promise<string> {
-    return this.actions.getAttribute(this.usernameInput, 'type');
-  }
-
-  public async getSubmitButtonText(): Promise<string> {
-    const text = await this.actions.getText(this.submitButton);
-    return text.trim();
+  public get submitButton() {
+    return $(this.submitButtonSelector);
   }
 }
 

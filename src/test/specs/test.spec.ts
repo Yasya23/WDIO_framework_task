@@ -5,11 +5,11 @@ initShould();
 
 describe('Chai Assertion Interfaces (Refactored)', () => {
   beforeEach(async () => {
-    await loginPage.open();
+    await browser.url(loginPage.url);
   });
 
   it('1. Demonstration of the ASSERT interface', async () => {
-    const headerText = await loginPage.getTitleText();
+    const headerText = await loginPage.headerTitle.getText();
 
     assert.isString(headerText, 'Header text must be a string');
     assert.equal(headerText, 'Login Page', 'The header text did not match!');
@@ -17,15 +17,17 @@ describe('Chai Assertion Interfaces (Refactored)', () => {
   });
 
   it('2. Demonstration of the SHOULD interface', async () => {
-    const isDisplayed = await loginPage.isUsernameDisplayed();
-    const inputType = await loginPage.getUsernameInputType();
+    await loginPage.usernameInput.waitForDisplayed();
+    const isDisplayed = await loginPage.usernameInput.isDisplayed();
+    const inputType = (await loginPage.usernameInput.getAttribute('type'))!;
 
     isDisplayed.should.be.true;
+
     inputType.should.be.a('string').and.equal('text');
   });
 
   it('3. Demonstration of the EXPECT interface', async () => {
-    const buttonText = await loginPage.getSubmitButtonText();
+    const buttonText = await loginPage.submitButton.getText();
 
     chaiExpect(buttonText).to.be.a('string');
     chaiExpect(buttonText).to.equal('Login');
