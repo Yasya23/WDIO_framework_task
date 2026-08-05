@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "moduleResolution": "node",
+    "moduleResolution": "bundler",
     "module": "ESNext",
     "target": "es2022",
     "lib": ["es2022", "dom"],
@@ -10,6 +10,12 @@
       "expect-webdriverio",
       "@wdio/mocha-framework"
     ],
+    "paths": {
+      "@pages/*": ["./src/business/pages/*"],
+      "@constants/*": ["./src/business/constants/*"],
+      "@business-types/*": ["./src/business/types/*"],
+      "@utils/*": ["./src/core/utils/*"]
+    },
     "skipLibCheck": true,
     "noEmit": true,
     "allowImportingTsExtensions": true,
@@ -20,5 +26,9 @@
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true
   },
-  "include": ["test", "wdio.conf.ts", "types/**/*.d.ts"]
+  "include": [
+    "src/test/configs/wdio.conf.ts",
+    "./src/test/specs/**/*.ts",
+    "src/**/*.ts"
+  ]
 }

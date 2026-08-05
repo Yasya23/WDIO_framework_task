@@ -1,27 +1,31 @@
-# WDIO Framework EPAM Task
+# WebdriverIO Test Automation Framework (TAF)
 
-This repository contains the practical task implementation for Module 2, focusing on building an automation framework from scratch and mastering various assertion styles.
+A modular, TypeScript-based WebdriverIO E2E testing framework structured around clean layer separation and Page Object Model (POM) design patterns.
 
-## Tasks Completed
+---
 
-### 1. Framework Architecture Setup
+## Architecture & Layering
 
-- Initialized a WebdriverIO (WDIO) automation framework.
-- Configured the project using **Mocha** as the test runner and **TypeScript** for static type safety.
-- Integrated cross-browser drivers to execute end-to-end tests against a public sandbox environment.
+The framework follows a strict 3-layer architecture to ensure maintainability, scalability, and clean code separation:
 
-### 2. Assertion Library Integration
+- **1. Core Layer (`src/core`)**
+  - Contains global configuration/environment helpers (`get-env.util.ts`).
+  - Free of application-specific domain logic or selectors.
 
-- Explicitly installed and configured the **Chai** assertion library as a development dependency to complement native WDIO matchers.
-- Set up global environment references to ensure smooth type-checking when injecting custom properties.
+- **2. Business Layer (`src/business`)**
+  - Implements the Page Object Model (`BasePage`, `LoginPage`).
+  - Stores domain-specific types (`paths.ts`) and constants (`paths.constants.ts`).
 
-### 3. Assertion Interface Practice (`test/specs/`)
+- **3. Tests Layer (`src/test`)**
+  - Contains test suites (`specs/`) and framework runner configurations (`configs/wdio.conf.ts`).
 
-Created a dedicated test suite demonstrating practical mastery of Chai's distinct evaluation interfaces:
+---
 
-- **Assert (TDD Style):** Implemented functional, message-driven validations using `assert.equal()`.
-- **Expect (BDD Style):** Constructed natural-language wrapper chains using `expect().to.equal()` (aliased to avoid runtime collisions with global WDIO matchers).
-- **Should (BDD Style):** Handled object property extensions using `.should` syntax alongside type-safe fallbacks for native TypeScript primitives.
+## Highlights & Improvements Done
+
+- **ESM Path Resolution:** Updated `wdio.conf.ts` to use `process.cwd()` with `path.resolve` for cross-environment, ESM-compatible absolute pathing (`tsConfigPath`, `specs`).
+- **Glob Pattern Spec Matching:** Configured dynamic spec matching (`src/test/specs/**/*.spec.ts`) to automatically include new test suites.
+- **Path Aliases:** Configured TS path aliases (`@pages/*`, `@constants/*`, `@utils/*`, `@business-types/*`) for clean imports across all layers.
 
 ---
 
