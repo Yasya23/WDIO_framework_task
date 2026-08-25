@@ -8,11 +8,18 @@
     "@wdio/globals": "^9.29.1",
     "@wdio/local-runner": "^9.29.1",
     "@wdio/mocha-framework": "^9.29.1",
-    "@wdio/spec-reporter": "^9.29.1",
+    "@wdio/spec-reporter": "^9.31.2",
     "chai": "^6.2.2",
-    "expect-webdriverio": "^5.7.0"
+    "expect-webdriverio": "^5.7.0",
+    "wdio-html-nice-reporter": "^8.1.7",
+    "open-cli": "^8.0.0",
+    "rimraf": "^5.0.0"
   },
   "scripts": {
-    "test": "wdio run ./src/test/configs/wdio.conf.ts"
+    "test:run": "wdio run ./src/test/configs/wdio.conf.ts",
+    "test": "npm run clean:reports && npm run test:run; npm run report:generate",
+    "report:generate": "node node_modules/wdio-html-nice-reporter/lib/makeReport.js master-report.html reports/html-reports/",
+    "report:open": "open-cli reports/html-reports/master-report.html",
+    "clean:reports": "rimraf reports"
   }
 }
